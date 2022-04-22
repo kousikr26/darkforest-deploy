@@ -1,0 +1,95 @@
+# Configuration for a Dark Forest universe
+# Defined in TOML as per https://toml.io/en/v0.5.0
+
+[initializers]
+ADMIN_CAN_ADD_PLANETS = true
+WORLD_RADIUS_LOCKED = false
+TOKEN_MINT_END_TIMESTAMP = 2021-10-05T04:00:00.000Z # Mon Oct 04 2021 21:00:00 GMT-0700 (Pacific Daylight Time)
+TARGET4_RADIUS = 1600
+INITIAL_WORLD_RADIUS = 8000
+ROUND_NAME = "0.6.6 round 4"
+ROUND_END = 2021-10-05T04:00:00.000Z # Mon Oct 04 2021 21:00:00 GMT-0700 (Pacific Daylight Time)
+
+##################################
+# SNARK keys & Perlin parameters #
+##################################
+DISABLE_ZK_CHECKS = false
+PLANETHASH_KEY = 6278
+SPACETYPE_KEY = 6279
+BIOMEBASE_KEY = 6270
+PERLIN_MIRROR_X = false
+PERLIN_MIRROR_Y = false
+PERLIN_LENGTH_SCALE = 16384 # must be a power of two no greater than 16384
+
+######################
+# Game configuration #
+######################
+MAX_NATURAL_PLANET_LEVEL = 256
+TIME_FACTOR_HUNDREDTHS = 600 # speedup/slowdown game
+PERLIN_THRESHOLD_1 = 14
+PERLIN_THRESHOLD_2 = 15
+PERLIN_THRESHOLD_3 = 19
+INIT_PERLIN_MIN = 13
+INIT_PERLIN_MAX = 14
+SPAWN_RIM_AREA = 0
+BIOME_THRESHOLD_1 = 15
+BIOME_THRESHOLD_2 = 17
+PLANET_RARITY = 16384
+PHOTOID_ACTIVATION_DELAY = 14400 # seconds
+LOCATION_REVEAL_COOLDOWN = 86400 # seconds
+CLAIM_PLANET_COOLDOWN = 10800 # seconds
+PLANET_TYPE_WEIGHTS = [
+  [
+    [1, 0, 0, 0, 0],
+    [13, 2, 0, 1, 0],
+    [13, 2, 0, 1, 0],
+    [13, 2, 0, 0, 1],
+    [13, 2, 0, 0, 1],
+    [13, 2, 0, 0, 1],
+    [13, 2, 0, 0, 1],
+    [13, 2, 0, 0, 1],
+    [13, 2, 0, 0, 1],
+    [13, 2, 0, 0, 1],
+  ],
+  [
+    [1, 0, 0, 0, 0],
+    [13, 2, 1, 0, 0],
+    [12, 2, 1, 1, 0],
+    [11, 2, 1, 1, 1],
+    [12, 2, 1, 0, 1],
+    [12, 2, 1, 0, 1],
+    [12, 2, 1, 0, 1],
+    [12, 2, 1, 0, 1],
+    [12, 2, 1, 0, 1],
+    [12, 2, 1, 0, 1],
+  ],
+  [
+    [1, 0, 0, 0, 0],
+    [10, 4, 2, 0, 0],
+    [10, 4, 1, 1, 0],
+    [8, 4, 1, 2, 1],
+    [8, 4, 1, 2, 1],
+    [8, 4, 1, 2, 1],
+    [8, 4, 1, 2, 1],
+    [8, 4, 1, 2, 1],
+    [8, 4, 1, 2, 1],
+    [8, 4, 1, 2, 1],
+  ],
+  [
+    [1, 0, 0, 0, 0],
+    [11, 4, 1, 0, 0],
+    [11, 4, 1, 0, 0],
+    [7, 4, 2, 2, 1],
+    [7, 4, 2, 2, 1],
+    [7, 4, 2, 2, 1],
+    [7, 4, 2, 2, 1],
+    [7, 4, 2, 2, 1],
+    [7, 4, 2, 2, 1],
+    [7, 4, 2, 2, 1],
+  ],
+]
+
+
+##########################
+# Planets to add to game #
+##########################
