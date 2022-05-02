@@ -193,7 +193,7 @@ export class ContractsAPI extends EventEmitter {
       tx.methodName === ContractMethodName.INIT &&
       tx.contract.address === this.coreContract.address
     ) {
-      return '40';
+      return '5000';
     }
 
     return getSetting(this.ethConnection.getAddress(), Setting.GasFeeGwei);
