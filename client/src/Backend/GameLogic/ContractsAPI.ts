@@ -193,10 +193,12 @@ export class ContractsAPI extends EventEmitter {
       tx.methodName === ContractMethodName.INIT &&
       tx.contract.address === this.coreContract.address
     ) {
-      return '5000';
+      console.log("MATCH ADDRESS");
+      return '31';
     }
-
-    return getSetting(this.ethConnection.getAddress(), Setting.GasFeeGwei);
+    console.log("ELSE MATCH ADDRESS");
+    return '31';
+    // return getSetting(this.ethConnection.getAddress(), Setting.GasFeeGwei);
   }
 
   /**
@@ -213,7 +215,7 @@ export class ContractsAPI extends EventEmitter {
     if (balance.lt(ContractsAPI.MIN_BALANCE)) {
       const notifsManager = NotificationManager.getInstance();
       notifsManager.balanceEmpty();
-      throw new Error('xDAI balance too low!');
+      throw new Error('ONE balance too low!');
     }
 
     const gasFeeGwei = EthersBN.from(txRequest.overrides.gasPrice || '1000000000');
