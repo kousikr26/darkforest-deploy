@@ -83,11 +83,11 @@ export function HatPane({
         </div>
         <div>
           <Sub>Current Balance</Sub>
-          <span>{balanceEth} xDAI</span>
+          <span>{balanceEth} ONE</span>
         </div>
 
         <EmSpacer height={1} />
-        <Link to={'https://blog.zkga.me/df-04-faq'}>Get More xDai</Link>
+        <Link to={'https://faucet.pops.one/'}>Get More ONE</Link>
         <EmSpacer height={0.5} />
 
         <Btn

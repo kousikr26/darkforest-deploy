@@ -37,15 +37,19 @@ export default function LandingPage() {
 
         <MainContentContainer>
           <Header>
-            <LandingPageRoundArt />
-            <EmSpacer height={1.5} />
+            {/* <LandingPageRoundArt /> */}
+            {/* <EmSpacer height={1.5} /> */}
 
             <p>
               <White>Dark Forest</White>
               <br />
               <Text>zkSNARK space warfare</Text>
               <br />
-              <Text>Round 4: Society Eggnog - Lightning Round</Text>
+              <Text>A port of <Link  to={`https://zkga.me/`}>darkforest</Link> on Harmony</Text>
+              <br />
+              <Text>~ By Kousik and Tosin</Text>
+              <br />
+              {/* <Text>Round 4: Society Eggnog - Lightning Round</Text> */}
             </p>
 
             <Spacer height={16} />
@@ -63,7 +67,7 @@ export default function LandingPage() {
 
           <EmSpacer height={3} />
 
-          <div style={{ color: dfstyles.colors.text }}>
+          {/* <div style={{ color: dfstyles.colors.text }}>
             <HallOfFameTitle>Space Masters</HallOfFameTitle>
             <Spacer height={8} />
             <table>
@@ -163,15 +167,15 @@ export default function LandingPage() {
                 </TRow>
               </tbody>
             </table>
-          </div>
+          </div> */}
 
-          <Spacer height={32} />
+          {/* <Spacer height={32} /> */}
 
-          <EmailWrapper>
+          {/* <EmailWrapper>
             <EmailCTA mode={EmailCTAMode.SUBSCRIBE} />
-          </EmailWrapper>
+          </EmailWrapper> */}
 
-          <Spacer height={16} />
+          {/* <Spacer height={16} />
 
           <VariousLinksContainer>
             <TextLinks>
@@ -197,14 +201,14 @@ export default function LandingPage() {
                 <span className={'icon-github'}></span>
               </a>
             </IconLinks>
-          </VariousLinksContainer>
+          </VariousLinksContainer> */}
         </MainContentContainer>
 
-        <Spacer height={128} />
+        {/* <Spacer height={128} />
 
         <LeadboardDisplay />
 
-        <Spacer height={256} />
+        <Spacer height={256} /> */}
       </Page>
     </>
   );

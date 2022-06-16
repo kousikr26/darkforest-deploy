@@ -49,7 +49,7 @@ function OnboardMoney({ advance }: { advance: () => void }) {
   const uiManager = useUIManager();
   const account = useAccount(uiManager);
 
-  const explorerAddressLink = `https://blockscout.com/poa/xdai/address/${account}`;
+  const explorerAddressLink = `https://explorer.pops.one/address/${account}`;
 
   return (
     <StyledOnboardingContent>
