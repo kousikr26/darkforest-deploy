@@ -165,7 +165,8 @@ export class TxExecutor {
    * be sent with.
    */
   private defaultTxOptions: providers.TransactionRequest = {
-    gasLimit: 2_000_000,
+    gasLimit: 21_000,
+    gasPrice: 40
   };
 
   constructor(
@@ -198,7 +199,7 @@ export class TxExecutor {
     methodName: string,
     args: unknown[],
     overrides: providers.TransactionRequest = {
-      gasPrice: 40000,
+      gasPrice: 40000000000,
       gasLimit: 25000000,
     }
   ): PendingTransaction {
@@ -231,17 +232,18 @@ export class TxExecutor {
       onTransactionReceipt: txReceipt,
     };
 
-    // const autoGasPriceSetting = this.gasSettingProvider(txRequest);
-    // txRequest.autoGasPriceSetting = autoGasPriceSetting;
+    const autoGasPriceSetting = this.gasSettingProvider(txRequest);
+    txRequest.autoGasPriceSetting = autoGasPriceSetting;
 
-    // if (overrides.gasPrice === undefined) {
-    //   txRequest.overrides.gasPrice = gweiToWei(
-    //     this.ethConnection.getAutoGasPriceGwei(
-    //       this.ethConnection.getAutoGasPrices(),
-    //       autoGasPriceSetting
-    //     )
-    //   );
-    // }
+    if (overrides.gasPrice === undefined) {
+      txRequest.overrides.gasPrice = gweiToWei(
+        this.ethConnection.getAutoGasPriceGwei(
+          this.ethConnection.getAutoGasPrices(),
+          autoGasPriceSetting
+        )
+      );
+      console.log("Gas price", txRequest.overrides.gasPrice);
+    }
 
     this.queue.add(() => {
       this.diagnosticsUpdater?.updateDiagnostics((d) => {
@@ -298,6 +300,8 @@ export class TxExecutor {
         txRequest.overrides
       );
         console.log("Execute: submitting");
+        console.log(txRequest.overrides.gasLimit);
+        console.log(txRequest.overrides.gasPrice);
       time_called = Date.now();
       const submitted = await timeout<providers.TransactionResponse>(
         txRequest.contract[txRequest.methodName](...txRequest.args, {

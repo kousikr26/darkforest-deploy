@@ -97,7 +97,7 @@ module.exports = {
     // The string values are fallbacks if the env variable is not set
     new EnvironmentPlugin({
       NODE_ENV: 'development',
-      DEFAULT_RPC: 'https://api.s0.b.hmny.io/',
+      DEFAULT_RPC: 'https://api.s0.ps.hmny.io/',
       CONVERSATION_API_HOST: isProd ? 'https://api.zkga.me' : 'http://localhost:3000',
       LEADERBOARD_API: isProd ? 'https://api.zkga.me' : 'http://localhost:3000',
       WEBSERVER_URL: isProd ? 'https://api.zkga.me' : 'http://localhost:3000',
