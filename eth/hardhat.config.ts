@@ -103,6 +103,11 @@ const config: HardhatUserConfig = {
       accounts: [`0x${HARMONY_PRIVATE_KEY}`],
       chainId: 1666600000
     },
+    harmonydevnet: {
+      url: `https://api.s0.ps.hmny.io/`,
+      accounts: [`0x${HARMONY_PRIVATE_KEY}`],
+      chainId: 1666900000
+    },
 
     // Used when you dont specify a network on command line, like in tests
     hardhat: {

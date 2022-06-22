@@ -276,7 +276,8 @@ export function GameLandingPage() {
           WHITELIST_CONTRACT_ADDRESS,
           loadWhitelistContract
         );
-        const isWhitelisted = await whitelist.isWhitelisted(address);
+        // const isWhitelisted = await whitelist.isWhitelisted(address);
+        const isWhitelisted = true; // Remove whitelisting
 
         terminal.current?.println('');
         terminal.current?.print('Checking if whitelisted... ');
@@ -439,9 +440,9 @@ export function GameLandingPage() {
         );
 
         terminal.current?.printLink(
-          'https://explorer.pops.one/',
+          'https://explorer.ps.hmny.io/',
           () => {
-            window.open('https://explorer.pops.one/');
+            window.open('https://explorer.ps.hmny.io/');
           },
           TerminalTextStyle.Red
         );

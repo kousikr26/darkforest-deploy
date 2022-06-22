@@ -60,6 +60,7 @@
     "hardhat:mainnet": "hardhat --network mainnet",
     "hardhat:harmonytestnet": "hardhat --network harmonytestnet",
     "hardhat:harmonymainnet": "hardhat --network harmonymainnet",
+    "hardhat:harmonydevnet":  "hardhat --network harmonydevnet",
     "compile": "hardhat compile",
     "circom:prod": "hardhat circom --verbose",
     "circom:dev": "hardhat circom --deterministic --verbose",
