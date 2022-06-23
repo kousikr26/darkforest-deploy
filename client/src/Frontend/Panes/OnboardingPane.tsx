@@ -49,7 +49,7 @@ function OnboardMoney({ advance }: { advance: () => void }) {
   const uiManager = useUIManager();
   const account = useAccount(uiManager);
 
-  const explorerAddressLink = `https://explorer.ps.hmny.io/address/${account}`;
+  const explorerAddressLink = `https://explorer.harmony.one/address/${account}`;
 
   return (
     <StyledOnboardingContent>

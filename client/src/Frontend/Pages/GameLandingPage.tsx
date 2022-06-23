@@ -440,9 +440,9 @@ export function GameLandingPage() {
         );
 
         terminal.current?.printLink(
-          'https://explorer.ps.hmny.io/',
+          'https://explorer.harmony.one/',
           () => {
-            window.open('https://explorer.ps.hmny.io/');
+            window.open('https://explorer.harmony.one/');
           },
           TerminalTextStyle.Red
         );

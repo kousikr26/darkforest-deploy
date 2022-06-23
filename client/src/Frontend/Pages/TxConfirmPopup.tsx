@@ -343,7 +343,7 @@ export function TxConfirmPopup({ match }: RouteComponentProps) {
         </div>
         <div>
           <b>Gas Limit</b>
-          <span>40000</span>
+          <span>2000000</span>
         </div>
         <div>
           <b>Total Transaction Cost</b>
