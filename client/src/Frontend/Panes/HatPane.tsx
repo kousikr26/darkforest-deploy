@@ -87,7 +87,7 @@ export function HatPane({
         </div>
 
         <EmSpacer height={1} />
-        <Link to={'https://faucet.pops.one/'}>Get More ONE</Link>
+        <Link to={'http://dev.faucet.easynode.one/'}>Get More ONE</Link>
         <EmSpacer height={0.5} />
 
         <Btn

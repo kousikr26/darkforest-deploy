@@ -276,8 +276,8 @@ export function GameLandingPage() {
           WHITELIST_CONTRACT_ADDRESS,
           loadWhitelistContract
         );
-        // const isWhitelisted = await whitelist.isWhitelisted(address);
-        const isWhitelisted = true; // Remove whitelisting
+        const isWhitelisted = await whitelist.isWhitelisted(address);
+        // const isWhitelisted = true; // Bad way to remove whitelisting
 
         terminal.current?.println('');
         terminal.current?.print('Checking if whitelisted... ');
