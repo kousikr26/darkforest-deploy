@@ -270,7 +270,7 @@ export class EthConnection {
     this.blockNumber = latestBlockNumber;
     this.blockNumber$.publish(latestBlockNumber);
 
-    console.log(`processing events for ${latestBlockNumber - previousBlockNumber} blocks`);
+    // console.log(`processing events for ${latestBlockNumber - previousBlockNumber} blocks`);
 
     this.processEvents(
       Math.min(previousBlockNumber + 1, latestBlockNumber),
