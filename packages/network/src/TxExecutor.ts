@@ -341,6 +341,7 @@ export class TxExecutor {
           time_errored = Date.now();
         }
         txRequest.onReceiptError(error);
+        console.log(error);
       }
     } finally {
       this.diagnosticsUpdater?.updateDiagnostics((d) => {
