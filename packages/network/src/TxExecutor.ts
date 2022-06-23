@@ -232,18 +232,18 @@ export class TxExecutor {
       onTransactionReceipt: txReceipt,
     };
 
-    const autoGasPriceSetting = this.gasSettingProvider(txRequest);
-    txRequest.autoGasPriceSetting = autoGasPriceSetting;
+    // const autoGasPriceSetting = this.gasSettingProvider(txRequest);
+    // txRequest.autoGasPriceSetting = autoGasPriceSetting;
 
-    if (overrides.gasPrice === undefined) {
-      txRequest.overrides.gasPrice = gweiToWei(
-        this.ethConnection.getAutoGasPriceGwei(
-          this.ethConnection.getAutoGasPrices(),
-          autoGasPriceSetting
-        )
-      );
-      console.log("Gas price", txRequest.overrides.gasPrice);
-    }
+    // if (overrides.gasPrice === undefined) {
+    //   txRequest.overrides.gasPrice = gweiToWei(
+    //     this.ethConnection.getAutoGasPriceGwei(
+    //       this.ethConnection.getAutoGasPrices(),
+    //       autoGasPriceSetting
+    //     )
+    //   );
+    //   console.log("Gas price", txRequest.overrides.gasPrice);
+    // }
 
     this.queue.add(() => {
       this.diagnosticsUpdater?.updateDiagnostics((d) => {
@@ -321,6 +321,7 @@ export class TxExecutor {
 
       const confirmed = await this.ethConnection.waitForTransaction(submitted.hash);
       if (confirmed.status !== 1) {
+        console.log("confirmed",confirmed);
         time_errored = Date.now();
         throw new Error('transaction reverted');
       } else {
@@ -378,7 +379,7 @@ export class TxExecutor {
 
     logEvent.rpc_endpoint = this.ethConnection.getRpcEndpoint();
     logEvent.user_address = this.ethConnection.getAddress();
-
+    console.log(logEvent);
     this.afterTransaction && this.afterTransaction(txRequest, logEvent);
   };
 
