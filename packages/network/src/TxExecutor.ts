@@ -165,7 +165,7 @@ export class TxExecutor {
    * be sent with.
    */
   private defaultTxOptions: providers.TransactionRequest = {
-    gasLimit: 21_000,
+    gasLimit: 2_000_000,
     gasPrice: 40
   };
 
@@ -200,7 +200,7 @@ export class TxExecutor {
     args: unknown[],
     overrides: providers.TransactionRequest = {
       gasPrice: 150000000000,
-      gasLimit: 50000,
+      gasLimit: 2000000,
     }
   ): PendingTransaction {
     console.log("In queue: starting, gas");
