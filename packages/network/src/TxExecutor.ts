@@ -199,7 +199,7 @@ export class TxExecutor {
     methodName: string,
     args: unknown[],
     overrides: providers.TransactionRequest = {
-      gasPrice: 150000000000,
+      gasPrice: 40000000000,
       gasLimit: 2000000,
     }
   ): PendingTransaction {
