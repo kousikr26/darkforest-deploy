@@ -16,7 +16,7 @@ import '../tasks/deploy-more';
 import { tscompile } from '../utils/tscompile';
 
 task('deploy', 'deploy all contracts')
-  .addOptionalParam('whitelist', 'override the whitelist', false, types.boolean)
+  .addOptionalParam('whitelist', 'override the whitelist', true, types.boolean)
   .addOptionalParam('fund', 'amount of eth to fund whitelist contract for fund', 0.5, types.float)
   .addOptionalParam(
     'subgraph',
