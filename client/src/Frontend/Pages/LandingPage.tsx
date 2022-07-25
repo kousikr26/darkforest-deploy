@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { Btn } from '../Components/Btn';
-import { EmSpacer, Link, Spacer } from '../Components/CoreUI';
+import { EmSpacer, Link, PageLink, Spacer } from '../Components/CoreUI';
 import { EmailCTA, EmailCTAMode } from '../Components/Email';
 import { HideSmall, Sub, Text, White } from '../Components/Text';
 import LandingPageCanvas from '../Renderers/LandingPageCanvas';
@@ -43,11 +43,14 @@ export default function LandingPage() {
             <p>
               <White>Dark Forest</White>
               <br />
-              <Text>zkSNARK space warfare</Text>
+              <PageText>zkSNARK space warfare</PageText>
               <br />
-              <Text>A port of <Link  to={`https://zkga.me/`}>darkforest</Link> on Harmony</Text>
+              <PageText>
+                A port of <PageLink to={`https://zkga.me/`}>darkforest</PageLink> on
+                Harmony
+              </PageText>
               <br />
-              <Text>~ By Kousik and Tosin</Text>
+              <PageText>~ By Kousik and Tosin</PageText>
               <br />
               {/* <Text>Round 4: Society Eggnog - Lightning Round</Text> */}
             </p>
@@ -223,15 +226,17 @@ const VariousLinksContainer = styled.div`
   align-items: center;
 `;
 
+// background: linear-gradient(to left top, rgba(219, 10, 20, 0.2), rgba(1, 255, 22, 0.2)) fixed;
 const PrettyOverlayGradient = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to left top, rgba(219, 10, 20, 0.2), rgba(1, 255, 22, 0.2)) fixed;
+  background: linear-gradient(to right top, rgba(73, 10, 219, 0.2), rgba(1, 255, 1, 0.2)) fixed;
   background-position: 50%, 50%;
   display: inline-block;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -1;
 `;
 
 const Header = styled.div`
@@ -311,6 +316,10 @@ const Page = styled.div`
   flex-direction: column;
   align-items: center;
   z-index: ${LandingPageZIndex.BasePage};
+`;
+
+const PageText = styled.span`
+  color: ${dfstyles.colors.dfblue};
 `;
 
 const HallOfFameTitle = styled.div`
