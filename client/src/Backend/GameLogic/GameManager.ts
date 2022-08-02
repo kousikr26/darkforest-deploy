@@ -12,7 +12,7 @@ import {
   verifySignature,
   weiToEth,
 } from '@darkforest_eth/network';
-import { locationIdFromBigInt, locationIdToDecStr } from '@darkforest_eth/serde';
+import { address, locationIdFromBigInt, locationIdToDecStr } from '@darkforest_eth/serde';
 import {
   Artifact,
   ArtifactId,
@@ -516,13 +516,24 @@ class GameManager extends EventEmitter {
       // @todo - what do we do if we can't connect to the webserver
     }
   }
-
+  public async getPlayerScores() {
+    return await this.contractsAPI.getPlayers();
+  }
   private async refreshScoreboard() {
+
+    // Added: Kousik Hack to get the scores from the contract
     const allplayers = await this.contractsAPI.getPlayers();
     // console.log("PLAYERS");
     // console.log(allplayers);
+    let leaderboard_entries = [];
+    for (let [key,value] of allplayers) {
+      leaderboard_entries.push({"ethAddress": address(key), "score": value['score'],"twitter":''});
+    }
+    const leaderboard = {entries:leaderboard_entries};
+
+
     try {
-      const leaderboard = await loadLeaderboard();
+      // const leaderboard = await loadLeaderboard();
 
       for (const entry of leaderboard.entries) {
         const player = this.players.get(entry.ethAddress);
