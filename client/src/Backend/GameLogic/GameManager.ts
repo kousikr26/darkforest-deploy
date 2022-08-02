@@ -520,7 +520,9 @@ class GameManager extends EventEmitter {
     return await this.contractsAPI.getPlayers();
   }
   private async refreshScoreboard() {
-
+    const allplayers = await this.contractsAPI.getPlayers();
+    console.log("PLAYERS");
+    console.log(allplayers);
 
     try {
       const leaderboard = await loadLeaderboard();
