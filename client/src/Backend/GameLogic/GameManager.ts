@@ -499,7 +499,8 @@ class GameManager extends EventEmitter {
         }
       }
     });
-
+    
+    
     this.refreshScoreboard();
     this.refreshNetworkHealth();
   }
@@ -517,6 +518,9 @@ class GameManager extends EventEmitter {
   }
 
   private async refreshScoreboard() {
+    const allplayers = await this.contractsAPI.getPlayers();
+    console.log("PLAYERS");
+    console.log(allplayers);
     try {
       const leaderboard = await loadLeaderboard();
 
