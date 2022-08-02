@@ -180,13 +180,12 @@ export function useLeaderboard(poll: number | undefined = undefined): {
   leaderboard: Leaderboard | undefined;
   error: Error | undefined;
 } {
-  const uiManager = useUIManager();
   const [leaderboard, setLeaderboard] = useState<Leaderboard | undefined>();
   const [error, setError] = useState<Error | undefined>();
 
   const load = useCallback(async function load() {
     try {
-      setLeaderboard(await loadLeaderboard(uiManager.getGameManager()));
+      setLeaderboard(await loadLeaderboard());
     } catch (e) {
       console.log('error loading leaderboard', e);
       setError(e);
