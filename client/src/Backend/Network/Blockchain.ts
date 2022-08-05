@@ -110,7 +110,7 @@ export function getEthConnection(): Promise<EthConnection> {
   if (isProd) {
     url = localStorage.getItem('XDAI_RPC_ENDPOINT_v5') || defaultUrl;
   } else {
-    url = 'http://localhost:8545';
+    url = defaultUrl;
   }
 
   return createEthConnection(url);
