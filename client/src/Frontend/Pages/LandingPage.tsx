@@ -207,11 +207,11 @@ export default function LandingPage() {
           </VariousLinksContainer> */}
         </MainContentContainer>
 
-        {/* <Spacer height={128} />
+        <Spacer height={128} />
 
         <LeadboardDisplay />
 
-        <Spacer height={256} /> */}
+        <Spacer height={256} />
       </Page>
     </>
   );
