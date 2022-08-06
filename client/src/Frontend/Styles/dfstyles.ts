@@ -12,7 +12,7 @@ export const SPACE_TYPE_COLORS = {
   [SpaceType.DEAD_SPACE]: 'rgb(0, 37, 1)',
 } as const;
 
-const text = color('rgb(105, 250, 189)').hex();
+const text = color('rgb(0, 174, 233)').hex();
 const textLight = color(text).lighten(0.3).hex();
 const subtext = color('rgb(248, 248, 248)').hex();
 const subbertext = color(text).lighten(0.5).hex();
