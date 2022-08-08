@@ -5,3 +5,7 @@ packages/contracts/index.ts
 
 # Local Netlify folder
 .netlify
+
+packages/contracts/index.d.ts
+packages/contracts/index.js
+packages/contracts/index.ts

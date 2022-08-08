@@ -12,28 +12,28 @@ export const SPACE_TYPE_COLORS = {
   [SpaceType.DEAD_SPACE]: 'rgb(0, 37, 1)',
 } as const;
 
-const text = color('#bbb').hex();
+const text = color('rgb(0, 174, 233)').hex();
 const textLight = color(text).lighten(0.3).hex();
-const subtext = color(text).darken(0.3).hex();
-const subbertext = color(text).darken(0.5).hex();
-const subbesttext = color(text).darken(0.8).hex();
+const subtext = color('rgb(248, 248, 248)').hex();
+const subbertext = color(text).lighten(0.5).hex();
+const subbesttext = color(text).lighten(0.8).hex();
 
-const background = '#151515';
-const backgrounddark = '#252525';
-const backgroundlight = color(background).lighten(0.5).hex();
-const backgroundlighter = color(backgroundlight).lighten(0.3).hex();
+const background = 'rgb(27,41,94)';
+const backgrounddark = 'rgb(3,9,33)';
+const backgroundlight = color(background).darken(0.5).hex();
+const backgroundlighter = color(backgroundlight).darken(0.3).hex();
 
-const border = '#777';
+const border = 'rgb(55, 88, 115)';
 const borderDark = color(border).darken(0.2).hex();
 const borderDarker = color(borderDark).darken(0.2).hex();
 
 const blueBackground = '#0a0a23';
 
-const dfblue = '#00ADE1';
-const dfgreen = '#00DC82';
+const dfblue = 'rgb(95, 152, 199)';
+const dfgreen = 'rgb(0, 214, 123)';
 const dfgreendark = color(dfgreen).darken(0.7).hex();
 const dfgreenlight = color(dfgreen).lighten(0.1).hex();
-const dfred = '#FF6492';
+const dfred = 'rgb(210, 53, 64)';
 const dfyellow = '#e8e228';
 const dfpurple = '#9189d9';
 const dfwhite = '#ffffff';

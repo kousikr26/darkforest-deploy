@@ -76,11 +76,27 @@ const StyledTerminalWrapper = styled.div<{
 
 export function TerminalWrapper({ children, initRender, terminalEnabled }: LandingWrapperProps) {
   return (
-    <StyledTerminalWrapper initRender={initRender} terminalEnabled={terminalEnabled}>
-      {children}
-    </StyledTerminalWrapper>
+    <>
+      <PrettyOverlayGradient />
+      <StyledTerminalWrapper initRender={initRender} terminalEnabled={terminalEnabled}>
+        {children}
+      </StyledTerminalWrapper>
+    </>
   );
 }
+
+const PrettyOverlayGradient = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right top, rgba(73, 10, 219, 0.1), rgba(1, 255, 1, 0.1)) fixed;
+  background-position: 50%, 50%;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  pointer-events: none;
+`;
 
 const StyledTerminalToggler = styled.div<{ terminalEnabled: boolean }>`
   position: absolute;
