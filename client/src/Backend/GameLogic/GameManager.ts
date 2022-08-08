@@ -12,7 +12,7 @@ import {
   verifySignature,
   weiToEth,
 } from '@darkforest_eth/network';
-import { locationIdFromBigInt, locationIdToDecStr } from '@darkforest_eth/serde';
+import { address, locationIdFromBigInt, locationIdToDecStr } from '@darkforest_eth/serde';
 import {
   Artifact,
   ArtifactId,
@@ -499,7 +499,8 @@ class GameManager extends EventEmitter {
         }
       }
     });
-
+    
+    
     this.refreshScoreboard();
     this.refreshNetworkHealth();
   }
@@ -515,8 +516,14 @@ class GameManager extends EventEmitter {
       // @todo - what do we do if we can't connect to the webserver
     }
   }
-
+  public async getPlayerScores() {
+    return await this.contractsAPI.getPlayers();
+  }
   private async refreshScoreboard() {
+    const allplayers = await this.contractsAPI.getPlayers();
+    console.log("PLAYERS");
+    console.log(allplayers);
+
     try {
       const leaderboard = await loadLeaderboard();
 

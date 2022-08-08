@@ -47,6 +47,7 @@ function calculateScoreboard(
   const entries: ScoreboardEntry[] = Object.values(scoreboardMap);
   entries.sort((a, b) => b.score - a.score);
 
+
   return entries;
 }
 
@@ -81,4 +82,5 @@ export async function loadLeaderboard(): Promise<Leaderboard> {
   
 
   return rep;
+
 }
