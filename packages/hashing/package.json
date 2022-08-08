@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "prepublishOnly": "npm run docs",
-    "prepare": "tsc -p . && copy src\\fractions dist\\fractions",
+    "prepare": "tsc -p . && cp -r src/fractions dist/fractions",
     "test": "exit 0",
     "lint": "eslint .",
     "format": "prettier --write .",
