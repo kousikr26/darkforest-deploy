@@ -28,5 +28,8 @@ public/contracts/*.json
 
 declarations
 
+#env file
+.env
+
 # Local Netlify folder
 .netlify

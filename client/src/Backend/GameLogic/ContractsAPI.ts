@@ -87,7 +87,7 @@ import {
   WorldLocation,
 } from '@darkforest_eth/types';
 import bigInt from 'big-integer';
-import { BigNumber as EthersBN, ContractFunction, ethers, Event, providers } from 'ethers';
+import { BigNumber, BigNumber as EthersBN, ContractFunction, ethers, Event, providers } from 'ethers';
 import { EventEmitter } from 'events';
 import _ from 'lodash';
 import NotificationManager from '../../Frontend/Game/NotificationManager';
@@ -1006,6 +1006,55 @@ export class ContractsAPI extends EventEmitter {
     const player = decodePlayer(rawPlayer);
 
     return player;
+  }
+
+  async getPlanets(
+    onProgress?: (fractionCompleted: number) => void
+  ): Promise<Map<LocationId, Planet>> {
+    console.log('getting planets');
+    const nPlanets = (
+      await this.makeCall<EthersBN>(this.coreContract.getNPlanets)
+    ).toNumber();
+    // console.log(nPlanets)
+    const planetIds = await aggregateBulkGetter<EthersBN>(
+      nPlanets,
+      2000,
+      async (start, end) => await this.makeCall( this.gettersContract.bulkGetPlanetIds,[start, end]),
+      onProgress
+    );
+    planetIds.map(locationIdFromEthersBN)
+    // console.log(planetIds)
+    const rawPlanets = await aggregateBulkGetter(
+      nPlanets,
+      200,
+      async (start, end) =>
+        await this.makeCall(this.gettersContract.bulkGetPlanetsByIds, [planetIds.slice(start, end)]),
+        onProgress
+    );
+    // console.log(rawPlanets)
+    const rawPlanetsExtendedInfo = await aggregateBulkGetter(
+      nPlanets,
+      1000,
+      async (start, end) =>
+      await this.makeCall(this.gettersContract.bulkGetPlanetsExtendedInfoByIds,[
+        planetIds.slice(start, end)]),
+      onProgress
+    );
+    // console.log(rawPlanetsExtendedInfo)
+    const allPlanets: Map<LocationId, Planet> = new Map();
+
+    for (let i = 0; i < nPlanets; i += 1) {
+      if (!!rawPlanets[i] && !!rawPlanetsExtendedInfo[i]) {
+        const planet = decodePlanet(
+          planetIds[i].toString(),
+          rawPlanets[i],
+          rawPlanetsExtendedInfo[i]
+        );
+        allPlanets.set(planet.locationId, planet);
+      }
+    }
+    // console.log(allPlanets)
+    return allPlanets;
   }
 
   public async getWorldRadius(): Promise<number> {
