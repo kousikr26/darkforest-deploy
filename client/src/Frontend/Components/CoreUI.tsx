@@ -225,6 +225,39 @@ const LinkImpl = styled.a`
   `}
 `;
 
+export function PageLink(
+  props: {
+    to?: string;
+    color?: string;
+    openInThisTab?: boolean;
+    children: React.ReactNode;
+  } & React.HtmlHTMLAttributes<HTMLAnchorElement>
+) {
+  const { to, color, openInThisTab, children } = props;
+
+  return (
+    <PageLinkImpl {...props} href={to} color={color} target={openInThisTab ? undefined : '_blank'}>
+      {children}
+    </PageLinkImpl>
+  );
+}
+
+const PageLinkImpl = styled.a`
+  cursor: pointer;
+
+  ${({ color }: { color?: string }) => css`
+    text-decoration: underline;
+    color: ${color || dfstyles.colors.text};
+  }
+
+    &:hover {
+      color: ${colors(color || dfstyles.colors.text)
+        .lighten(0.3)
+        .hex()};
+    }
+  `}
+`;
+
 /**
  * Inline block rectangle, measured in ems, default 1em by 1em.
  */

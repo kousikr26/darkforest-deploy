@@ -73,6 +73,7 @@ export const MainWindow = styled.div`
 export const CanvasContainer = styled.div`
   flex-grow: 1;
   position: relative;
+  z-index: 1002;
 `;
 
 export const CanvasWrapper = styled.div`
