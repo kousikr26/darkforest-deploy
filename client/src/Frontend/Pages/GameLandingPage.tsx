@@ -620,11 +620,20 @@ export function GameLandingPage() {
         }
         else{
           const bet = await betting.getBet();
-          terminal.current?.println(`Bet: ${bet}`);
-          await betting.bet({ value: ethers.utils.parseUnits("1", "ether") })
-          terminal.current?.println('Bet placed.');
-          const newbet = await betting.getBet();
-          terminal.current?.println(`New Bet: ${newbet}`);
+          terminal.current?.println(`Current bet: ${bet}`);
+          terminal.current?.println('Do you wish to place a bet? (y/n)');
+          const userInput = await terminal.current?.getInput();
+          if (userInput === 'y') {
+            terminal.current?.println('Enter bet amount:');
+            const betAmount = await terminal.current?.getInput() || '0';
+            await betting.bet({ value: ethers.utils.parseUnits(betAmount, "ether") })
+            terminal.current?.println('Bet placed.');
+            const newbet = await betting.getBet();
+            terminal.current?.println(`New Bet: ${newbet}`);
+          }
+
+          
+          
         }
 
       } catch (e) {
