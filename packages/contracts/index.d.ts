@@ -33,60 +33,64 @@
 /**
  * The name of the network where these contracts are deployed.
  */
- export declare const NETWORK = 'harmonydevnet';
- /**
-  * The id of the network where these contracts are deployed.
-  */
- export declare const NETWORK_ID = 1666900000;
- /**
-  * The block in which the DarkForestCore contract was deployed.
-  */
- export declare const START_BLOCK = 7108775;
- /**
-  * The address for the DarkForestUtils library.
-  */
- export declare const UTILS_LIBRARY_ADDRESS = '0x4F45a57299b23082B3235aD30f788294aDb4000c';
- /**
-  * The address for the DarkForestPlanet library.
-  */
- export declare const PLANET_LIBRARY_ADDRESS = '0x4c99507C137AB6F8e4FEC092d4785220541AA4Ad';
- /**
-  * The address for the DarkForestArtifactUtils library.
-  */
- export declare const ARTIFACT_UTILS_LIBRARY_ADDRESS = '0xd1472015D31Aa2d51C8bC6B343B039573627C706';
- /**
-  * The address for the Verifier library.
-  */
- export declare const VERIFIER_LIBRARY_ADDRESS = '0x8a4dCc8D480EFA54CF6E72aF5466a3E540b7e0fd';
- /**
-  * The address for the DarkForestInitialize library.
-  */
- export declare const INITIALIZE_LIBRARY_ADDRESS = '0x9D355c55A0f25d6762a4b9bf6a244791163A5E40';
- /**
-  * The address for the DarkForestLazyUpdate library.
-  */
- export declare const LAZY_UPDATE_LIBRARY_ADDRESS = '0x8648f96c9cAbe09bAdB0156A4724f4DD0730696B';
- /**
-  * The address for the DarkForestCore contract.
-  */
- export declare const CORE_CONTRACT_ADDRESS = '0xd94be0311c2cCb5D2D4a8116CDf36eeEa797d6Eb';
- /**
-  * The address for the DarkForestTokens contract.
-  */
- export declare const TOKENS_CONTRACT_ADDRESS = '0xcE6a921291AE9D52Fd9623765c41140627FaA63D';
- /**
-  * The address for the DarkForestGetters contract.
-  */
- export declare const GETTERS_CONTRACT_ADDRESS = '0x27c63dE9894E5e13d1e659FAF001F224Dd50f758';
- /**
-  * The address for the Whitelist contract.
-  */
- export declare const WHITELIST_CONTRACT_ADDRESS = '0xA3583b17e34290D999E504D7e20385850a0d3A4d';
- /**
-  * The address for the DarkForestGPTCredit contract.
-  */
- export declare const GPT_CREDIT_CONTRACT_ADDRESS = '0xB8b8A79C72F832fE35A9c80c4713944905A92d08';
- /**
-  * The address for the DarkForestScoring contract.
-  */
- export declare const SCORING_CONTRACT_ADDRESS = '';
+export declare const NETWORK = 'harmonydevnet';
+/**
+ * The id of the network where these contracts are deployed.
+ */
+export declare const NETWORK_ID = 1666900000;
+/**
+ * The block in which the DarkForestCore contract was deployed.
+ */
+export declare const START_BLOCK = 7893690;
+/**
+ * The address for the DarkForestUtils library.
+ */
+export declare const UTILS_LIBRARY_ADDRESS = '0x39f841DF0C1D23EEfd145089B68b88562CcE55e1';
+/**
+ * The address for the DarkForestPlanet library.
+ */
+export declare const PLANET_LIBRARY_ADDRESS = '0x085409cC9ea928266671c42c5F0dd6203aD41Dc7';
+/**
+ * The address for the DarkForestArtifactUtils library.
+ */
+export declare const ARTIFACT_UTILS_LIBRARY_ADDRESS = '0x111FD8222BA2F1aa4bc431FD171c358fa116e7C4';
+/**
+ * The address for the Verifier library.
+ */
+export declare const VERIFIER_LIBRARY_ADDRESS = '0xA1719c5E8EDdC0DFA0482596c8b1Cf1bB5d89724';
+/**
+ * The address for the DarkForestInitialize library.
+ */
+export declare const INITIALIZE_LIBRARY_ADDRESS = '0x9cdAd2cCBCd6105A511A3adaC6a1f4AD9eDDDff4';
+/**
+ * The address for the DarkForestLazyUpdate library.
+ */
+export declare const LAZY_UPDATE_LIBRARY_ADDRESS = '0x1CE313393b81eA042432C2e5eC5aD02E5FBC0E21';
+/**
+ * The address for the DarkForestCore contract.
+ */
+export declare const CORE_CONTRACT_ADDRESS = '0xE3cE666Fb967b3e28d0B676a993D1bea48e60285';
+/**
+ * The address for the DarkForestTokens contract.
+ */
+export declare const TOKENS_CONTRACT_ADDRESS = '0x7C18bd8141C4eD811882Cafa8e24581Ec69362a6';
+/**
+ * The address for the DarkForestGetters contract.
+ */
+export declare const GETTERS_CONTRACT_ADDRESS = '0xa9cB019b0864b4D780068250b1eD839fbDb39963';
+/**
+ * The address for the Whitelist contract.
+ */
+export declare const WHITELIST_CONTRACT_ADDRESS = '0x4dFd43ea3dB6BB2a191ab486Cf4aEd60C9cE114C';
+/**
+ * The address for the Betting contract.
+ */
+export declare const BETTING_CONTRACT_ADDRESS = '0xec2aA9ed61b92c3c7569a624f92BaD2Ca820fd31';
+/**
+ * The address for the DarkForestGPTCredit contract.
+ */
+export declare const GPT_CREDIT_CONTRACT_ADDRESS = '0xC55AFc38D101d47DA2873aa2B0690e46AD0d9980';
+/**
+ * The address for the DarkForestScoring contract.
+ */
+export declare const SCORING_CONTRACT_ADDRESS = '';

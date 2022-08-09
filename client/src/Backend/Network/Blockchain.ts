@@ -5,6 +5,7 @@ import gptCreditContractAbiUrl from '@darkforest_eth/contracts/abis/DarkForestGP
 import scoringContractAbiUrl from '@darkforest_eth/contracts/abis/DarkForestScoringRound3.json';
 import tokensContractAbiUrl from '@darkforest_eth/contracts/abis/DarkForestTokens.json';
 import whitelistContractAbiUrl from '@darkforest_eth/contracts/abis/Whitelist.json';
+import bettingContractAbiUrl from '@darkforest_eth/contracts/abis/Betting.json';
 import type {
   DarkForestCore,
   DarkForestGetters,
@@ -12,6 +13,7 @@ import type {
   DarkForestScoringRound3,
   DarkForestTokens,
   Whitelist,
+  Betting
 } from '@darkforest_eth/contracts/typechain';
 import { createContract, createEthConnection, EthConnection } from '@darkforest_eth/network';
 import type { providers, Wallet } from 'ethers';
@@ -71,6 +73,20 @@ export async function loadWhitelistContract(
   const whitelistContractAbi = await fetch(whitelistContractAbiUrl).then((r) => r.json());
 
   return createContract<Whitelist>(address, whitelistContractAbi, provider, signer);
+}
+
+/** 
+ * Loads the Betting contract, which facilitates bet placement and retrieval.
+ */
+export async function loadBettingContract(
+  address: string,
+  provider: providers.JsonRpcProvider,
+  signer?: Wallet
+  ): Promise<Betting> {
+  const bettingContractAbi = await fetch(bettingContractAbiUrl).then((r) => r.json());
+
+  return createContract<Betting>(address, bettingContractAbi, provider, signer);
+  
 }
 
 /**
