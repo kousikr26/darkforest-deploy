@@ -36,9 +36,7 @@ extendEnvironment((env: HardhatRuntimeEnvironment) => {
   env.DEPLOYER_MNEMONIC = DEPLOYER_MNEMONIC;
   // cant easily lookup deployer.address here so well have to be ok with undefined and check it later
   env.ADMIN_PUBLIC_ADDRESS = ADMIN_PUBLIC_ADDRESS;
-  env.HARMONY_PRIVATE_KEY = HARMONY_PRIVATE_KEY;
   env.packageDirs = packageDirs;
-
   env.contracts = lazyObject(() => {
     const contracts = require('@darkforest_eth/contracts');
     return settings.parse(settings.Contracts, contracts);
@@ -55,7 +53,6 @@ extendEnvironment((env: HardhatRuntimeEnvironment) => {
   });
 });
 
-const  = "8a15221e91de1f978798d9e182623cc03ff0d0f2bd6f5e9b3c477a207091d3c9";
 
 // The xdai config, but it isn't added to networks unless we have a DEPLOYER_MNEMONIC
 const xdai = {
