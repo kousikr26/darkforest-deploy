@@ -619,12 +619,12 @@ export function GameLandingPage() {
           setStep(TerminalPromptStep.TERMINATED);
         }
         else{
-          const bet = await betting.getBet();
+          const bet = await (await betting.getBet()).div(10**18);
           terminal.current?.println(`Current bet: ${bet}`);
           terminal.current?.println('Do you wish to place a bet? (y/n)');
           const userInput = await terminal.current?.getInput();
           if (userInput === 'y') {
-            terminal.current?.println('Enter bet amount:');
+            terminal.current?.println('Enter bet amount in ONE:');
             const betAmount = await terminal.current?.getInput() || '0';
             await betting.bet({ value: ethers.utils.parseUnits(betAmount, "ether") })
             terminal.current?.println('Bet placed.');

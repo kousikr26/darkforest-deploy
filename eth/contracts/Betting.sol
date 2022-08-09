@@ -17,9 +17,10 @@ contract Betting is Initializable{
         _;
     }
      
-    function bet() public payable {
+    function bet() public payable returns (uint) {
         require(msg.value > 1 ether, "Minimum bet is 1 ONE");
-        bets[msg.sender] = msg.value;
+        bets[msg.sender] += msg.value;
+        return bets[msg.sender];
     }
     function setWinners(address[5] memory leaderboard) public admin_only {
         
