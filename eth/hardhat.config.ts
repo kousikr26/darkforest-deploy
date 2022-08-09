@@ -24,7 +24,7 @@ import './tasks/whitelist';
 
 require('dotenv').config();
 
-const { DEPLOYER_MNEMONIC, ADMIN_PUBLIC_ADDRESS } = process.env;
+const { DEPLOYER_MNEMONIC, ADMIN_PUBLIC_ADDRESS,HARMONY_PRIVATE_KEY } = process.env;
 
 // Ensure we can lookup the needed workspace packages
 const packageDirs = {
@@ -36,7 +36,7 @@ extendEnvironment((env: HardhatRuntimeEnvironment) => {
   env.DEPLOYER_MNEMONIC = DEPLOYER_MNEMONIC;
   // cant easily lookup deployer.address here so well have to be ok with undefined and check it later
   env.ADMIN_PUBLIC_ADDRESS = ADMIN_PUBLIC_ADDRESS;
-
+  env.HARMONY_PRIVATE_KEY = HARMONY_PRIVATE_KEY;
   env.packageDirs = packageDirs;
 
   env.contracts = lazyObject(() => {
@@ -55,7 +55,7 @@ extendEnvironment((env: HardhatRuntimeEnvironment) => {
   });
 });
 
-const HARMONY_PRIVATE_KEY = "8a15221e91de1f978798d9e182623cc03ff0d0f2bd6f5e9b3c477a207091d3c9";
+const  = "8a15221e91de1f978798d9e182623cc03ff0d0f2bd6f5e9b3c477a207091d3c9";
 
 // The xdai config, but it isn't added to networks unless we have a DEPLOYER_MNEMONIC
 const xdai = {
