@@ -35,6 +35,10 @@ async function copyAbi(
     JSON.stringify((await hre.artifacts.readArtifact('DarkForestGetters')).abi),
     { semi: false, parser: 'json' }
   );
+  const bettingAbi = prettier.format(
+    JSON.stringify((await hre.artifacts.readArtifact('Betting')).abi),
+    { semi: false, parser: 'json' }
+  );
   const gptCreditAbi = prettier.format(
     JSON.stringify((await hre.artifacts.readArtifact('DarkForestGPTCredit')).abi),
     { semi: false, parser: 'json' }
@@ -53,6 +57,7 @@ async function copyAbi(
   await fs.writeFile(path.join(abisDir, 'DarkForestTokens.json'), tokensAbi);
   await fs.writeFile(path.join(abisDir, 'Whitelist.json'), whitelistAbi);
   await fs.writeFile(path.join(abisDir, 'DarkForestGetters.json'), gettersAbi);
+  await fs.writeFile(path.join(abisDir, 'Betting.json'), bettingAbi);
   await fs.writeFile(path.join(abisDir, 'DarkForestGPTCredit.json'), gptCreditAbi);
   await fs.writeFile(path.join(abisDir, 'DarkForestScoringRound3.json'), scoringAbi);
 
@@ -65,6 +70,9 @@ async function copyAbi(
   );
 
   const gettersAbiFiltered = (await hre.artifacts.readArtifact('DarkForestGetters')).abi.filter(
+    abiFilter
+  );
+  const bettingAbiFiltered = (await hre.artifacts.readArtifact('Betting')).abi.filter(
     abiFilter
   );
 
@@ -87,7 +95,13 @@ async function copyAbi(
       parser: 'json',
     })
   );
-
+  await fs.writeFile(
+    path.join(abisDir, 'Betting_stripped.json'),
+    prettier.format(JSON.stringify(bettingAbiFiltered), {
+      semi: false,
+      parser: 'json',
+    })
+  );
   await fs.writeFile(
     path.join(abisDir, 'DarkForestTokens_stripped.json'),
     prettier.format(JSON.stringify(tokensAbiFiltered), {

@@ -1,5 +1,6 @@
 import { CONTRACT_PRECISION, EMPTY_LOCATION_ID } from '@darkforest_eth/constants';
 import {
+  BETTING_CONTRACT_ADDRESS,
   CORE_CONTRACT_ADDRESS,
   GETTERS_CONTRACT_ADDRESS,
   GPT_CREDIT_CONTRACT_ADDRESS,
@@ -14,6 +15,7 @@ import type {
   DarkForestScoringRound3,
   DarkForestTokens,
   Whitelist,
+  Betting,
 } from '@darkforest_eth/contracts/typechain';
 import {
   aggregateBulkGetter,
@@ -113,6 +115,7 @@ import {
   loadGptCreditContract,
   loadTokensContract,
   loadWhitelistContract,
+  loadBettingContract,
 } from '../Network/Blockchain';
 import { eventLogger, EventType } from '../Network/EventLogger';
 
@@ -163,6 +166,9 @@ export class ContractsAPI extends EventEmitter {
 
   get whitelistContract() {
     return this.ethConnection.getContract<Whitelist>(WHITELIST_CONTRACT_ADDRESS);
+  }
+  get bettingContract() {
+    return this.ethConnection.getContract<Betting>(BETTING_CONTRACT_ADDRESS);
   }
 
   get gptCreditContract() {
@@ -1344,6 +1350,7 @@ export async function makeContractsAPI(ethConnection: EthConnection): Promise<Co
   await ethConnection.loadContract(CORE_CONTRACT_ADDRESS, loadCoreContract);
   await ethConnection.loadContract(GETTERS_CONTRACT_ADDRESS, loadGettersContract);
   await ethConnection.loadContract(WHITELIST_CONTRACT_ADDRESS, loadWhitelistContract);
+  await ethConnection.loadContract(BETTING_CONTRACT_ADDRESS, loadBettingContract);
   await ethConnection.loadContract(GPT_CREDIT_CONTRACT_ADDRESS, loadGptCreditContract);
   await ethConnection.loadContract(TOKENS_CONTRACT_ADDRESS, loadTokensContract);
 

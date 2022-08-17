@@ -12,6 +12,7 @@ import type {
   DarkForestTokens,
   LibraryContracts,
   Whitelist,
+  Betting
 } from '../task-types';
 
 subtask('deploy:getters', 'deploy and return getters')
@@ -59,6 +60,23 @@ async function deployWhitelist(
     contractName: 'Whitelist',
     signerOrOptions: {},
     contractArgs: [args.controllerWalletAddress, args.whitelistEnabled],
+    deployOptions: {},
+    retries: 5,
+    hre,
+  });
+}
+subtask('deploy:betting', 'deploy and return betting')
+  .addParam('controllerWalletAddress', '', undefined, types.string)
+  .setAction(deployBetting);
+
+async function deployBetting(
+  args: {controllerWalletAddress: string},
+  hre: HardhatRuntimeEnvironment
+  ): Promise<Betting> {
+  return deployProxyWithRetry<Betting>({
+    contractName: 'Betting',
+    signerOrOptions: {},
+    contractArgs: [args.controllerWalletAddress],
     deployOptions: {},
     retries: 5,
     hre,

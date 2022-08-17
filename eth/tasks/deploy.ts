@@ -11,6 +11,7 @@ import type {
   DarkForestTokens,
   LibraryContracts,
   Whitelist,
+  Betting,
 } from '../task-types';
 import '../tasks/deploy-more';
 import { tscompile } from '../utils/tscompile';
@@ -65,6 +66,13 @@ async function deploy(
   console.log("Whitelist enabled ", args.whitelist);
   const whitelistAddress = whitelist.address;
   console.log('Whitelist deployed to:', whitelistAddress);
+
+  // deploy the betting contract
+  const betting: Betting = await hre.run('deploy:betting', {
+    controllerWalletAddress
+  });
+  const bettingAddress = betting.address;
+  console.log('Betting deployed to:', bettingAddress);
 
   // deploy the tokens contract
   const darkForestTokens: DarkForestTokens = await hre.run('deploy:tokens');
@@ -124,6 +132,7 @@ async function deploy(
     whitelistAddress,
     gptCreditAddress,
     scoringAddress,
+    bettingAddress,
   });
 
   // give all contract administration over to an admin adress if was provided
@@ -161,6 +170,7 @@ async function deploySave(
     whitelistAddress: string;
     gptCreditAddress: string;
     scoringAddress: string;
+    bettingAddress: string;
   },
   hre: HardhatRuntimeEnvironment
 ) {
@@ -253,6 +263,10 @@ async function deploySave(
    * The address for the Whitelist contract.
    */
   export const WHITELIST_CONTRACT_ADDRESS = '${args.whitelistAddress}';
+  /**
+   * The address for the Betting contract.
+   */
+  export const BETTING_CONTRACT_ADDRESS = '${args.bettingAddress}';
   /**
    * The address for the DarkForestGPTCredit contract.
    */

@@ -10,6 +10,7 @@ import type {
   DarkForestUtils,
   Verifier,
   Whitelist,
+  Betting,
 } from '@darkforest_eth/contracts/typechain';
 import type { Contract } from 'ethers';
 
@@ -24,6 +25,7 @@ export {
   Verifier,
   Whitelist,
   DarkForestScoringRound3,
+  Betting,
 };
 
 export interface LibraryContracts {

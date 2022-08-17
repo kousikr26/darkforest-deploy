@@ -1,15 +1,15 @@
 import { BLOCK_EXPLORER_URL } from '@darkforest_eth/constants';
-import { WHITELIST_CONTRACT_ADDRESS } from '@darkforest_eth/contracts';
+import { BETTING_CONTRACT_ADDRESS, WHITELIST_CONTRACT_ADDRESS } from '@darkforest_eth/contracts';
 import { EthConnection, neverResolves, weiToEth } from '@darkforest_eth/network';
 import { address } from '@darkforest_eth/serde';
-import { utils, Wallet } from 'ethers';
+import { ethers, utils, Wallet } from 'ethers';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import GameManager from '../../Backend/GameLogic/GameManager';
 import GameUIManager, { GameUIManagerEvent } from '../../Backend/GameLogic/GameUIManager';
 import TutorialManager, { TutorialState } from '../../Backend/GameLogic/TutorialManager';
 import { addAccount, getAccounts } from '../../Backend/Network/AccountManager';
-import { getEthConnection, loadWhitelistContract } from '../../Backend/Network/Blockchain';
+import { getEthConnection, loadWhitelistContract,loadBettingContract } from '../../Backend/Network/Blockchain';
 import {
   callRegisterUntilWhitelisted,
   EmailResponse,
@@ -608,6 +608,43 @@ export function GameLandingPage() {
 
   const advanceStateFromAllChecksPass = useCallback(
     async (terminal: React.MutableRefObject<TerminalHandle | undefined>) => {
+      try{
+        terminal.current?.println('Checking for bets...');
+        const betting = await ethConnection?.loadContract(
+          BETTING_CONTRACT_ADDRESS,
+          loadBettingContract
+        );
+        if (!betting) {
+          terminal.current?.println('ERROR: Betting contract not found. Terminating session.',TerminalTextStyle.Red);
+          setStep(TerminalPromptStep.TERMINATED);
+        }
+        else{
+          const bet =  ethers.utils.formatEther(await betting.getBet());
+          terminal.current?.println(`Current bet: ${bet}`);
+          terminal.current?.println('Do you wish to place a bet? (y/n)');
+          const userInput = await terminal.current?.getInput();
+          if (userInput === 'y') {
+            terminal.current?.println('Enter bet amount in ONE:');
+            const betAmount = await terminal.current?.getInput() || '0';
+            await betting.bet({ value: ethers.utils.parseUnits(betAmount, "ether") })
+            terminal.current?.println('Bet placed.');
+            const newbet = await betting.getBet();
+            terminal.current?.println(`New Bet: ${newbet}`);
+          }
+
+          
+          
+        }
+
+      } catch (e) {
+        terminal.current?.println(
+          'An unknown error occurred. please try again.',
+          TerminalTextStyle.Red
+        );
+        terminal.current?.println(e.message, TerminalTextStyle.Red);
+      }
+
+
       terminal.current?.println('');
       terminal.current?.println('Press ENTER to begin:');
       await terminal.current?.getInput();
@@ -624,7 +661,7 @@ export function GameLandingPage() {
       terminal.current?.println('Try running: df.getAccount()');
       terminal.current?.println('');
     },
-    []
+    [ethConnection]
   );
 
   const advanceStateFromComplete = useCallback(

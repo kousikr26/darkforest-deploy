@@ -3,21 +3,24 @@ pragma solidity ^0.7.6;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol";
-contract Lottery is Initializable{
+contract Betting is Initializable{
     address admin;
+    mapping(address => uint) public bets;
+    address[5] public winners;
+    uint[5] public rewards;
     function initialize(address admin_address) public initializer {
         admin = admin_address;
+        rewards = [uint256(0),0,0,0,0];
     }
     modifier admin_only() {
         require(msg.sender == admin, "Only admin can call this function");
         _;
     }
-    mapping(address => uint) public bets;
-    address[5] public winners;
-    uint[5] public rewards = [uint256(0),0,0,0,0];
-    function bet() public payable {
+     
+    function bet() public payable returns (uint) {
         require(msg.value > 1 ether, "Minimum bet is 1 ONE");
-        bets[msg.sender] = msg.value;
+        bets[msg.sender] += msg.value;
+        return bets[msg.sender];
     }
     function setWinners(address[5] memory leaderboard) public admin_only {
         
@@ -30,6 +33,9 @@ contract Lottery is Initializable{
     }
     function getBalance() public view returns (uint) {
         return address(this).balance;
+    }
+    function getBet() public view returns (uint) {
+        return bets[msg.sender];
     }
     function calculateRewards() public admin_only{
         uint funds = address(this).balance;
