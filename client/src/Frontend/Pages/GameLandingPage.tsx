@@ -624,18 +624,18 @@ export function GameLandingPage() {
         }
         else{
           const bet =  weiToEth(await betting.getBet());
-          terminal.current?.println(`Current bet: ${bet}`);
-          terminal.current?.println('Do you wish to place a bet? (y/n)');
+          terminal.current?.println(`You have an existing bet of ${bet} ONE`);
+          terminal.current?.println('Do you wish to add to this bet? (y/n)');
           const userInput = await terminal.current?.getInput();
           if (userInput === 'y') {
             const balance = weiToEth(await ethConnection?.loadBalance(address));
-            terminal.current?.println(`Your wallet balance: ${balance}`);
-            terminal.current?.println('Enter bet amount in ONE:');
+            terminal.current?.println(`Your wallet balance: ${balance} ONE`);
+            terminal.current?.println('Enter additional bet amount:');
             const betAmount = await terminal.current?.getInput() || '0';
             await betting.bet({ value: ethers.utils.parseUnits(betAmount, "ether") })
-            terminal.current?.println('Bet placed.');
+            terminal.current?.println(`Bet placed of ${betAmount} ONE`);
             const newbet = weiToEth(await betting.getBet()) + weiToEth(ethers.utils.parseUnits(betAmount, "ether"));
-            terminal.current?.println(`New Bet: ${newbet}`);
+            terminal.current?.println(`Final bet amount: ${newbet} ONE`);
           }
 
           
