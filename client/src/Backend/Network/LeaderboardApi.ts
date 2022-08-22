@@ -1,4 +1,5 @@
 import { BETTING_CONTRACT_ADDRESS } from '@darkforest_eth/contracts';
+import { weiToEth } from '@darkforest_eth/network';
 import { Leaderboard,Planet,Player,EthAddress } from '@darkforest_eth/types';
 import {makeContractsAPI} from '../GameLogic/ContractsAPI'
 import { getEthConnection, loadBettingContract } from './Blockchain';
@@ -77,7 +78,7 @@ export async function loadLeaderboard(): Promise<Leaderboard> {
   );
   const bets = [];
   for(var player of players){
-    const bet = await betting?.getBet(player.address) || 0;
+    const bet = weiToEth(await betting?.getBet(player.address)) || 0;
     bets.push(bet)
   }
 

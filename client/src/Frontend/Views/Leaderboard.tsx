@@ -111,7 +111,7 @@ function LeaderboardTable({ rows }: { rows: Array<[string, number | undefined, n
           },
           (row: [string, number, number], i) => {
             return (
-              <Cell style={{ color: getRankColor([i, row[2]]) }}>{weiToEth(row[2])}</Cell>
+              <Cell style={{ color: getRankColor([i, row[2]]) }}>{row[2]}</Cell>
             );
           }
         ]}
