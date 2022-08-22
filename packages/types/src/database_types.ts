@@ -24,4 +24,5 @@ export interface LeaderboardEntry {
   score: number | undefined;
   ethAddress: EthAddress;
   twitter?: string;
+  betamount?: number | undefined;
 }
