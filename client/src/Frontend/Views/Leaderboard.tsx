@@ -92,7 +92,7 @@ function LeaderboardTable({ rows }: { rows: Array<[string, number | undefined, n
           <Cell key='place'>place</Cell>,
           <Cell key='player'>player</Cell>,
           <Cell key='score'>score</Cell>,
-          <Cell key='Bet size(ONE)'>score</Cell>,
+          <Cell key='bet'>Bet size(ONE)</Cell>,
         ]}
         rows={rows}
         columns={[
