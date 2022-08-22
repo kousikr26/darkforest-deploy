@@ -609,26 +609,32 @@ export function GameLandingPage() {
   const advanceStateFromAllChecksPass = useCallback(
     async (terminal: React.MutableRefObject<TerminalHandle | undefined>) => {
       try{
+        const address = ethConnection?.getAddress();
+        if (!address || !ethConnection) throw new Error('not logged in');
         terminal.current?.println('Checking for bets...');
         const betting = await ethConnection?.loadContract(
           BETTING_CONTRACT_ADDRESS,
           loadBettingContract
         );
+        
+
         if (!betting) {
           terminal.current?.println('ERROR: Betting contract not found. Terminating session.',TerminalTextStyle.Red);
           setStep(TerminalPromptStep.TERMINATED);
         }
         else{
-          const bet =  ethers.utils.formatEther(await betting.getBet());
+          const bet =  weiToEth(await betting.getBet());
           terminal.current?.println(`Current bet: ${bet}`);
           terminal.current?.println('Do you wish to place a bet? (y/n)');
           const userInput = await terminal.current?.getInput();
           if (userInput === 'y') {
+            const balance = weiToEth(await ethConnection?.loadBalance(address));
+            terminal.current?.println(`Your wallet balance: ${balance}`);
             terminal.current?.println('Enter bet amount in ONE:');
             const betAmount = await terminal.current?.getInput() || '0';
             await betting.bet({ value: ethers.utils.parseUnits(betAmount, "ether") })
             terminal.current?.println('Bet placed.');
-            const newbet = await betting.getBet();
+            const newbet = weiToEth(await betting.getBet()) + weiToEth(ethers.utils.parseUnits(betAmount, "ether"));
             terminal.current?.println(`New Bet: ${newbet}`);
           }
 
