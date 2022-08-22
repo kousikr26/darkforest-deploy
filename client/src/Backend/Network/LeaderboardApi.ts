@@ -9,6 +9,7 @@ type ScoreboardEntry = {
   twitter?: string;
   score: number;
   sortedPlanets: Planet[];
+  betamount: number;
 };
 
 function calculateScoreboard(
@@ -21,6 +22,7 @@ function calculateScoreboard(
       ethAddress: player.address,
       score: 0,
       sortedPlanets: [],
+      betamount: 0,
     };
     if (player.twitter) {
       scoreboardMap[player.address].twitter = player.twitter;
@@ -58,7 +60,7 @@ export async function loadLeaderboard(): Promise<Leaderboard> {
   const planetsMap = await contractAPI.getPlanets()
   const planets:Planet[] = Object.values(planetsMap)
   const players:Player[] = Object.values(playersMap)
-
+  
   for(var player of playersMap.values()){
     players.push(player)
   }
