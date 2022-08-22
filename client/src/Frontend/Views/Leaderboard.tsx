@@ -87,11 +87,12 @@ function LeaderboardTable({ rows }: { rows: Array<[string, number | undefined, n
   return (
     <TableContainer>
       <Table
-        alignments={['r', 'l', 'r']}
+        alignments={['r', 'l', 'l','r']}
         headers={[
           <Cell key='place'>place</Cell>,
           <Cell key='player'>player</Cell>,
           <Cell key='score'>score</Cell>,
+          <Cell key='Bet size(ONE)'>score</Cell>,
         ]}
         rows={rows}
         columns={[
