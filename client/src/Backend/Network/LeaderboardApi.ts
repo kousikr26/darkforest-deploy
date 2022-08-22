@@ -78,7 +78,7 @@ export async function loadLeaderboard(): Promise<Leaderboard> {
   );
   const bets = [];
   for(var player of players){
-    const bet = weiToEth(await betting?.getBet(player.address)) || 0;
+    const bet = weiToEth(await betting?.getPlayerBet(player.address)) || 0;
     bets.push(bet)
   }
 

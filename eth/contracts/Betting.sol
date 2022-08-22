@@ -37,6 +37,9 @@ contract Betting is Initializable{
     function getBet() public view returns (uint) {
         return bets[msg.sender];
     }
+    function getPlayerBet(address player) public view returns (uint) {
+        return bets[player];
+    }
     function calculateRewards() public admin_only{
         uint funds = address(this).balance;
         uint fees = funds/10;
