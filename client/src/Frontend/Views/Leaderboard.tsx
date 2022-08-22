@@ -1,3 +1,4 @@
+import { weiToEth } from '@darkforest_eth/network';
 import { ArtifactRarity, Leaderboard } from '@darkforest_eth/types';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -82,7 +83,7 @@ function getRankColor([rank, score]: [number, number | undefined]) {
   return dfstyles.colors.subtext;
 }
 
-function LeaderboardTable({ rows }: { rows: Array<[string, number | undefined]> }) {
+function LeaderboardTable({ rows }: { rows: Array<[string, number | undefined, number | undefined]> }) {
   return (
     <TableContainer>
       <Table
@@ -94,20 +95,25 @@ function LeaderboardTable({ rows }: { rows: Array<[string, number | undefined]> 
         ]}
         rows={rows}
         columns={[
-          (row: [string, number], i) => (
+          (row: [string, number, number], i) => (
             <Cell style={{ color: getRankColor([i, row[1]]) }}>
               {row[1] === undefined || row[1] === null ? 'unranked' : i + 1 + '.'}
             </Cell>
           ),
-          (row: [string, number | undefined], i) => {
+          (row: [string, number | undefined, number | undefined], i) => {
             const color = getRankColor([i, row[1]]);
             return <Cell style={{ color }}>{playerToEntry(row[0], color)}</Cell>;
           },
-          (row: [string, number], i) => {
+          (row: [string, number, number], i) => {
             return (
               <Cell style={{ color: getRankColor([i, row[1]]) }}>{scoreToString(row[1])}</Cell>
             );
           },
+          (row: [string, number, number], i) => {
+            return (
+              <Cell style={{ color: getRankColor([i, row[2]]) }}>{weiToEth(row[2])}</Cell>
+            );
+          }
         ]}
       />
     </TableContainer>
@@ -160,12 +166,12 @@ function LeaderboardBody({ leaderboard }: { leaderboard: Leaderboard }) {
     return b.score - a.score;
   });
 
-  const rows: [string, number | undefined][] = leaderboard.entries.map((entry) => {
+  const rows: [string, number | undefined, number | undefined][] = leaderboard.entries.map((entry) => {
     if (typeof entry.twitter === 'string') {
-      return [entry.twitter, entry.score];
+      return [entry.twitter, entry.score, entry.betamount];
     }
 
-    return [entry.ethAddress, entry.score];
+    return [entry.ethAddress, entry.score, entry.betamount];
   });
 
   return (
@@ -174,7 +180,7 @@ function LeaderboardBody({ leaderboard }: { leaderboard: Leaderboard }) {
         <StatsTable>
           <tbody>
             <tr>
-              <td>round 4 complete</td>
+              <td>round alpha complete</td>
               <td>
                 <CountDown />
               </td>

@@ -1,6 +1,7 @@
+import { BETTING_CONTRACT_ADDRESS } from '@darkforest_eth/contracts';
 import { Leaderboard,Planet,Player,EthAddress } from '@darkforest_eth/types';
 import {makeContractsAPI} from '../GameLogic/ContractsAPI'
-import { getEthConnection } from './Blockchain';
+import { getEthConnection, loadBettingContract } from './Blockchain';
 
 const LEADERBOARD_API = process.env.LEADERBOARD_API as string;
 
@@ -14,19 +15,22 @@ type ScoreboardEntry = {
 
 function calculateScoreboard(
   players: Player[],
-  planets: Planet[]
+  planets: Planet[],
+  bets: number[]
 ): ScoreboardEntry[] {
   const scoreboardMap:Record<EthAddress, ScoreboardEntry> = {};
+  var idx = 0;
   for (const player of players) {
     scoreboardMap[player.address] = {
       ethAddress: player.address,
       score: 0,
       sortedPlanets: [],
-      betamount: 0,
+      betamount: bets[idx],
     };
     if (player.twitter) {
       scoreboardMap[player.address].twitter = player.twitter;
     }
+    idx++;
   }
   for (const planet of planets) {
     const owner = planet.owner;
@@ -67,8 +71,18 @@ export async function loadLeaderboard(): Promise<Leaderboard> {
   for(var planet of planetsMap.values()){
     planets.push(planet)
   }
-  
-  const entries  = calculateScoreboard(players, planets);
+  const betting = await ethConnection?.loadContract(
+    BETTING_CONTRACT_ADDRESS,
+    loadBettingContract
+  );
+  const bets = [];
+  for(var player of players){
+    const bet = await betting?.getBet(player.address) || 0;
+    bets.push(bet)
+  }
+
+  const entries  = calculateScoreboard(players, planets,bets);
+
   // console.log('entries',entries)
   
   // const address = `${LEADERBOARD_API}/leaderboard`;
