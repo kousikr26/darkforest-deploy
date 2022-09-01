@@ -126,7 +126,7 @@ export function GameLandingPage() {
     async (terminal: React.MutableRefObject<TerminalHandle | undefined>) => {
       terminal.current?.newline();
       terminal.current?.newline();
-      terminal.current?.printElement(<MythicLabelText text={`                 Dark Forest`} />);
+      terminal.current?.printElement(<MythicLabelText text={`                 Blue Forest`} />);
       terminal.current?.newline();
       terminal.current?.newline();
 
@@ -542,7 +542,7 @@ export function GameLandingPage() {
 
   const advanceStateFromNoHomePlanet = useCallback(
     async (terminal: React.MutableRefObject<TerminalHandle | undefined>) => {
-      terminal.current?.println('Welcome to DARK FOREST.');
+      terminal.current?.println('Welcome to BLUE FOREST.');
 
       const gameUIManager = gameUIManagerRef.current;
       if (!gameUIManager) {
