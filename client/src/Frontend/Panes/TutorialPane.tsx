@@ -20,7 +20,7 @@ function TutorialPaneContent({ tutorialState }: { tutorialState: TutorialState }
   if (tutorialState === TutorialState.None) {
     return (
       <div className='tutintro'>
-        Welcome to the universe of <White>DARK FOREST</White>. Would you like to play the tutorial?
+        Welcome to the universe of <White>BLUE FOREST</White>. Would you like to play the tutorial?
         <div>
           <Btn className='btn' onClick={() => tutorialManager.acceptInput(TutorialState.None)}>
             Yes
@@ -162,7 +162,7 @@ function TutorialPaneContent({ tutorialState }: { tutorialState: TutorialState }
         This is the end of the tutorial. Go out and explore the universe! More information will pop
         up in the <White>upper-right</White> as you discover more about the game.
         <br />
-        We hope you enjoy Dark Forest!
+        We hope you enjoy Blue Forest!
         <div>
           <Btn className='btn' onClick={() => tutorialManager.complete(uiManager)}>
             Finish

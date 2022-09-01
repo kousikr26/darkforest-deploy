@@ -42,7 +42,7 @@ export function HelpPane({ hook }: { hook: ModalHook }) {
 
         <Section>
           <SectionHeader>Dark Forest v0.6 R4: Society Eggnog</SectionHeader>
-          Dark Forest is a vast universe, obfuscated by zero-knowledge cryptography. Your{' '}
+          Blue Forest is a vast universe, obfuscated by zero-knowledge cryptography. Your{' '}
           <White>explorer</White> (bottom left) explores the universe, searching for{' '}
           <White>Planets</White> and other players.
           <EmSpacer height={1} />

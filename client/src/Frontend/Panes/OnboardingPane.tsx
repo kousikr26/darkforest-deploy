@@ -54,14 +54,14 @@ function OnboardMoney({ advance }: { advance: () => void }) {
   return (
     <StyledOnboardingContent>
       <p>
-        Welcome to <Green>Dark Forest</Green>!
+        Welcome to <Green>Blue Forest</Green>!
       </p>
       <p>
         <Red>There is real money being transacted in-game!</Red> We have initialized a{' '}
         <a onClick={() => window.open('https://github.com/austintgriffith/burner-wallet')}>
           burner wallet
         </a>{' '}
-        for you and dripped 15c to it, courtesy of Dark Forest Team and xDAI.
+        for you and dripped 15c to it, courtesy of Blue Forest Team and harmony.
       </p>
       <p className='indent'>
         Your burner wallet address is: <br />
@@ -70,7 +70,7 @@ function OnboardMoney({ advance }: { advance: () => void }) {
         </White>
       </p>
       <p>
-        This means that when you make moves on Dark Forest,{' '}
+        This means that when you make moves on Blue Forest,{' '}
         <White> you are authorizing the client to pay gas fees on your behalf</White>.
       </p>
       <p>
@@ -102,7 +102,7 @@ function OnboardStorage({ advance }: { advance: () => void }) {
       </p>
       <p>
         Your <White>private key and home coordinates</White> act as your password. You can use them
-        to access your Dark Forest account on other browsers, or to continue playing if you
+        to access your Blue Forest account on other browsers, or to continue playing if you
         accidentally clear local storage. But this also means{' '}
         <Red>they should never be viewed by anyone else!</Red>
       </p>
@@ -183,7 +183,7 @@ function OnboardFinished({ advance }: { advance: () => void }) {
       <p>That's all! You're now ready to play the game!</p>
       <p>
         We invite you to log into the universe. Click <White>Proceed</White> to join the world of{' '}
-        <White>DARK FOREST...</White>
+        <White>BLUE FOREST...</White>
       </p>
       <div>
         <span></span>
@@ -210,7 +210,7 @@ export default function OnboardingPane({ newPlayerHook }: { newPlayerHook: Hook<
 
   return (
     <ModalPane
-      title={'Welcome to Dark Forest'}
+      title={'Welcome to Blue Forest'}
       hideClose
       hook={newPlayerHook}
       name={ModalName.Onboarding}

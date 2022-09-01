@@ -461,7 +461,7 @@ export function GameLandingPage() {
       window.ui = newGameUIManager;
 
       terminal.current?.newline();
-      terminal.current?.println('Connected to Dark Forest Contract');
+      terminal.current?.println('Connected to Blue Forest Contract');
       gameUIManagerRef.current = newGameUIManager;
 
       if (!newGameManager.hasJoinedGame()) {
@@ -658,10 +658,12 @@ export function GameLandingPage() {
       setInitRenderState(InitRenderState.COMPLETE);
       terminal.current?.clear();
 
-      terminal.current?.println('Welcome to the Dark Forest.', TerminalTextStyle.Green);
+      terminal.current?.println('Welcome to the Blue Forest.', TerminalTextStyle.Green);
+      terminal.current?.println('');
+      terminal.current?.println('A port of dark forest to the Harmony ecosystem');
       terminal.current?.println('');
       terminal.current?.println(
-        "This is the Dark Forest interactive JavaScript terminal. Only use this if you know exactly what you're doing."
+        "This is the Blue Forest interactive JavaScript terminal. Only use this if you know exactly what you're doing."
       );
       terminal.current?.println('');
       terminal.current?.println('Try running: df.getAccount()');
