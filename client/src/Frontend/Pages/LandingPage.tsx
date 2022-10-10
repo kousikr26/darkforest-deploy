@@ -50,7 +50,7 @@ export default function LandingPage() {
                 Harmony
               </PageText>
               <br />
-              <PageText>~ By Kousik and Tosin</PageText>
+              <PageText>~ By zkDAO </PageText>
               <br />
               {/* <Text>Round 4: Society Eggnog - Lightning Round</Text> */}
             </p>
