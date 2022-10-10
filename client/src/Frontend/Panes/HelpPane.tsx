@@ -22,26 +22,16 @@ export function HelpPane({ hook }: { hook: ModalHook }) {
       <HelpContent>
         {useUIManager().isRoundOver() && (
           <Section>
-            <SectionHeader>Round 4 Complete</SectionHeader>
-            Dark Forest v0.6 Round 4 is now complete! Scores are being compiled and winners will be
-            announced shortly. Also, Artifacts will no longer be mintable. Thanks for playing!
+            <SectionHeader>Alpha round Complete</SectionHeader>
+            Blue forest alpha round is now complete. Please standby for the beta round soon.
+             Also, Artifacts will no longer be mintable. Thanks for playing!
           </Section>
         )}
 
-        <Section>
-          <SectionHeader>Firstly, Some Links:</SectionHeader>
-          <Link to='https://blog.zkga.me'>Official Info and Announcements</Link>
-          <br />
-          <Link to='https://discord.gg/2u2TN6v8r6'>Official Discord Server</Link>
-          <br />
-          <Link to='https://dfwiki.net/'>Community-Run Wiki</Link>
-          <br />
-          <br />
-          Secondly... welcome to
-        </Section>
+        
 
         <Section>
-          <SectionHeader>Dark Forest v0.6 R4: Society Eggnog</SectionHeader>
+          <SectionHeader>Blue Forest</SectionHeader>
           Blue Forest is a vast universe, obfuscated by zero-knowledge cryptography. Your{' '}
           <White>explorer</White> (bottom left) explores the universe, searching for{' '}
           <White>Planets</White> and other players.
@@ -58,10 +48,7 @@ export function HelpPane({ hook }: { hook: ModalHook }) {
         </Section>
 
         <Section>
-          <SectionHeader>Prizes and Scoring</SectionHeader>A snapshot of scores will be taken on{' '}
-          <White>October 4, 2021</White> at 9PM Pacific Time. At that time, the top 63
-          highest-scoring players will be awarded prizes from a pool 63 prize planets. You can see
-          the current rankings by scrolling down on the landing page of the game.
+          <SectionHeader>Prizes and Scoring</SectionHeader>
           <EmSpacer height={1} />
           Scoring this round is made up of two parts: finding artifacts and withdrawing silver. Each
           time you find an artifact, your score increases by an amount that depends on the rarity of

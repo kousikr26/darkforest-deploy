@@ -632,7 +632,14 @@ export function GameLandingPage() {
             terminal.current?.println(`Your wallet balance: ${balance} ONE`);
             terminal.current?.println('Enter additional bet amount:');
             const betAmount = await terminal.current?.getInput() || '0';
-            await betting.bet({ value: ethers.utils.parseUnits(betAmount, "ether") })
+            try{
+              await betting.bet({ value: ethers.utils.parseUnits(betAmount, "ether") })
+            }
+            catch (e) {
+              terminal.current?.println(`ERROR: ${e}`, TerminalTextStyle.Red);
+              terminal.current?.println('Minimum bet is 2 ONE, please ensure you have sufficient funds.');
+            }
+            
             terminal.current?.println(`Bet placed of ${betAmount} ONE`);
             const newbet = weiToEth(await betting.getBet()) + weiToEth(ethers.utils.parseUnits(betAmount, "ether"));
             terminal.current?.println(`Final bet amount: ${newbet} ONE`);
